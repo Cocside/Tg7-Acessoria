@@ -670,3 +670,9 @@ footer .logo-img { height: 40px; width: auto; }
         font-size: 0.75rem;
     }
 }
+@media (max-width: 480px) {
+    main {
+        margin-top: 7rem; /* 👈 aumenta para compensar o header em duas linhas */
+        padding-top: 2rem;
+    }
+}

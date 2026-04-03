@@ -156,8 +156,11 @@ main {
    ========================================================================== */
 #prim {
     display: flex;
-    flex-direction: row;
+    flex-direction: row; /* Padrão para desktop */
     justify-content: space-around;
+    align-items: center;
+    padding: 2rem 5%;
+    gap: 2rem;
 } /* Layout da primeira seção em formato de linha */
 
 section#apresent, #prim {
@@ -165,14 +168,82 @@ section#apresent, #prim {
     justify-content: space-around;
     align-items: center;
 } /* Alinhamento central das seções de boas-vindas */
-
+#logo1 {
+    max-width: 100%;
+    height: auto;
+}
 #prim1 {
-    width: 50%;
-    margin-left: 4rem;
-    font-family: 'Montserrat', sans-serif;
+    width: 50%; /* No desktop ocupa metade */
     text-align: left;
 } /* Define largura e alinhamento do texto na área Hero */
+@media (max-width: 768px) {
+    #prim {
+        flex-direction: column-reverse; /* Empilha a logo em cima do texto ou vice-versa */
+        text-align: center;
+        padding-top: 6rem; /* Garante que não fique embaixo do header fixo */
+    }
 
+    #prim1 {
+        width: 100%; /* Texto ocupa a largura total no celular */
+        margin-left: 0; /* Remove margens laterais do desktop */
+    }
+
+    #ask {
+        font-size: 2rem; /* Reduz o título para caber na tela do celular */
+        margin-top: 1rem;
+    }
+
+    #ask2 {
+        font-size: 1.1rem;
+    }
+
+    #prim2 {
+        width: 60%; /* Ajusta o tamanho da logo no mobile */
+        margin: 0 auto;
+    }
+}
+@media (max-width: 768px) {
+    /* Container que envolve as duas colunas */
+    #servicos {
+        display: flex;
+        flex-direction: column; /* Empilha as colunas verticalmente */
+        align-items: center;
+        width: 100%;
+        padding: 2rem 1rem;
+    }
+
+    /* Cada coluna individual (Depto Pessoal / Área Fiscal) */
+    .coluna-servicos {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 3rem; /* Espaço entre as duas grandes áreas */
+    }
+
+    /* O título de cada área */
+    .titulo-coluna {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
+    }
+
+    /* Grid de cards dentro da coluna */
+    .grid-servicos {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 90%; /* Centraliza os cards com uma margem lateral */
+    }
+
+    /* O card individual */
+    .card-servico {
+        width: 100%;
+        min-height: 80px; /* Garante que cards com pouco texto não fiquem menores que os outros */
+        justify-content: flex-start;
+        padding: 1.2rem;
+    }
+}
 #ask {
     font-size: 3rem;
     font-weight: 800;

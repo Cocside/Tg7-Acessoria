@@ -1,7 +1,14 @@
 /* ==========================================================================
-   CONFIGURAÇÕES GERAIS E FONTES
+   FONTES
    ========================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap');
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
 
 body {
     font-family: 'Montserrat', sans-serif;
@@ -11,13 +18,8 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-} /* Finaliza a estilização base do corpo da página e layout vertical */
-
-.container { width: 100%; } /* Define largura total para o container padrão */
-
-@media (min-width: 768px) {
-  .container { width: 80%; display: flex; }
-} /* Ajusta o container para desktops e telas médias */
+    overflow-x: hidden;
+}
 
 /* ==========================================================================
    HEADER
@@ -31,7 +33,7 @@ body {
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding: 1rem 5%;
-} /* Estiliza a barra de navegação fixa com efeito de desfoque (glassmorphism) */
+}
 
 .header-container {
     max-width: 1200px;
@@ -39,54 +41,52 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-} /* Alinha o conteúdo interno do header (Logo e Menu) */
+}
 
 .logo-area {
     display: flex;
     align-items: center;
     gap: 15px;
-} /* Organiza a imagem do logo e o texto da empresa lado a lado */
+}
 
 .logo-img {
     height: 50px;
     filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.3));
-} /* Define dimensões e brilho sutil na marca */
+}
 
 .logo-texto {
     display: flex;
     flex-direction: column;
     line-height: 1;
-} /* Empilha o nome e o subtítulo da empresa verticalmente */
+}
 
 .nome-empresa {
     color: #fff;
     font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: 2px;
-} /* Formatação do título principal no header */
+}
 
 .sub-empresa {
     color: #ff4d4d;
     font-size: 0.7rem;
     font-weight: 400;
-} /* Formatação do texto secundário (slogan/tipo) abaixo da logo */
+}
 
 .nav-links {
     display: flex;
     align-items: center;
     gap: 2rem;
-} /* Espaçamento entre os links de navegação */
+}
 
 .nav-item {
     color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
     font-size: 0.9rem;
-    transition: 0.3s;
-} /* Estilo padrão dos links de texto no menu */
+    transition: color 0.3s;
+}
 
-.nav-item:hover {
-    color: #ff4d4d;
-} /* Efeito visual ao passar o mouse nos links do menu */
+.nav-item:hover { color: #ff4d4d; }
 
 .nav-btn {
     background: #ff4d4d;
@@ -97,15 +97,22 @@ body {
     font-weight: 700;
     font-size: 0.8rem;
     transition: 0.3s;
-} /* Estiliza o botão de destaque (Call to Action) no menu */
+}
 
 .nav-btn:hover {
     background: #cc0000;
     box-shadow: 0 4px 15px rgba(255, 77, 77, 0.4);
-} /* Efeito de profundidade e cor ao interagir com o botão do header */
+}
+
+@media (max-width: 480px) {
+    .header-container { padding: 0.5rem 2%; }
+    .nome-empresa { font-size: 1.1rem; }
+    .nav-links { gap: 1rem; }
+    .nav-btn { padding: 8px 12px; font-size: 0.75rem; }
+}
 
 /* ==========================================================================
-   MAIN (ESTRUTURA E BACKGROUNDS)
+   MAIN
    ========================================================================== */
 main {
     display: flex;
@@ -117,7 +124,7 @@ main {
     overflow: hidden;
     margin-top: 5rem;
     padding-top: 4rem;
-} /* Define a área principal de conteúdo e sua relação com o header fixo */
+}
 
 .confiBGA-bg {
     opacity: 0.3;
@@ -129,7 +136,8 @@ main {
     z-index: -1;
     pointer-events: none;
     -webkit-mask-image: linear-gradient(to top, transparent 0%, black 100%);
-} /* Configura a imagem de fundo principal com máscara de fade out superior */
+    mask-image: linear-gradient(to top, transparent 0%, black 100%);
+}
 
 .books-wrap {
     overflow: hidden;
@@ -137,184 +145,96 @@ main {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%; 
-    z-index: -1; 
+    height: 100%;
+    z-index: -1;
     pointer-events: none;
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
     mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
-} /* Container para imagens secundárias de fundo com transição de transparência */
+}
 
 .books-bg {
     opacity: 0.15;
     width: 100%;
     height: 100%;
     object-fit: cover;
-} /* Ajusta a opacidade e preenchimento da imagem de fundo de livros */
+}
 
 /* ==========================================================================
-   SESSÃO: APRESENTAÇÃO / HERO
+   SEÇÃO HERO (#prim)
    ========================================================================== */
 #prim {
     display: flex;
-    flex-direction: row; /* Padrão para desktop */
+    flex-direction: row;
     justify-content: space-around;
     align-items: center;
     padding: 2rem 5%;
     gap: 2rem;
-} /* Layout da primeira seção em formato de linha */
+}
 
-section#apresent, #prim {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-} /* Alinhamento central das seções de boas-vindas */
+#prim1 {
+    width: 50%;
+    text-align: left;
+}
+
+#prim2 { display: flex; justify-content: center; }
+
 #logo1 {
     max-width: 100%;
     height: auto;
 }
-#prim1 {
-    width: 50%; /* No desktop ocupa metade */
-    text-align: left;
-} /* Define largura e alinhamento do texto na área Hero */
-@media (max-width: 768px) {
-    #prim {
-        flex-direction: column-reverse; /* Empilha a logo em cima do texto ou vice-versa */
-        text-align: center;
-        padding-top: 6rem; /* Garante que não fique embaixo do header fixo */
-    }
 
-    #prim1 {
-        width: 100%; /* Texto ocupa a largura total no celular */
-        margin-left: 0; /* Remove margens laterais do desktop */
-    }
-
-    #ask {
-        font-size: 2rem; /* Reduz o título para caber na tela do celular */
-        margin-top: 1rem;
-    }
-
-    #ask2 {
-        font-size: 1.1rem;
-    }
-
-    #prim2 {
-        width: 60%; /* Ajusta o tamanho da logo no mobile */
-        margin: 0 auto;
-    }
-}
-@media (max-width: 768px) {
-    /* Container que envolve as duas colunas */
-    #servicos {
-        display: flex;
-        flex-direction: column; /* Empilha as colunas verticalmente */
-        align-items: center;
-        width: 100%;
-        padding: 2rem 1rem;
-    }
-
-    /* Cada coluna individual (Depto Pessoal / Área Fiscal) */
-    .coluna-servicos {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 3rem; /* Espaço entre as duas grandes áreas */
-    }
-
-    /* O título de cada área */
-    .titulo-coluna {
-        text-align: center;
-        margin-bottom: 1.5rem;
-        font-size: 1.8rem;
-    }
-
-    /* Grid de cards dentro da coluna */
-    .grid-servicos {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        width: 90%; /* Centraliza os cards com uma margem lateral */
-    }
-
-    /* O card individual */
-    .card-servico {
-        width: 100%;
-        min-height: 80px; /* Garante que cards com pouco texto não fiquem menores que os outros */
-        justify-content: flex-start;
-        padding: 1.2rem;
-    }
-}
 #ask {
     font-size: 3rem;
     font-weight: 800;
     margin-top: 2rem;
-} /* Título principal impactante da apresentação */
+}
 
 #ask2 {
     font-size: 1.5rem;
     font-weight: 600;
     padding-top: 1%;
-} /* Subtítulo da apresentação */
+}
 
-#thiago {
-    max-width: 400px;
-    height: auto;
-} /* Controle de tamanho da imagem de perfil ou destaque */
+@media (max-width: 768px) {
+    #prim {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding-top: 3rem;
+    }
+    #prim1 { width: 100%; }
+    #prim2 { width: 60%; margin: 0 auto; }
+    #ask { font-size: 1.8rem; }
+    #ask2 { font-size: 1.1rem; }
+}
 
-.apresentacao-container {
-    padding: 5rem 5%;
-    max-width: 900px;
-} /* Espaçamento interno do bloco de texto descritivo */
-
-.apresentacao-texto {
-    font-family: 'Poppins', sans-serif;
-    color: white;
-    line-height: 1.6;
-    text-align: left;
-} /* Estilização da tipografia Poppins para o corpo do texto */
-
-.apresentacao-texto .destaque-boas-vindas {
-    font-size: 3rem;
-    font-weight: 800;
-    color: #A51D24;
-    display: block;
-    margin-bottom: 0.5rem;
-} /* Estilo do texto inicial em destaque vermelho */
-
-.apresentacao-texto .corpo-texto {
-    font-size: 1.4rem;
-    font-weight: 400;
-    opacity: 0.9;
-} /* Configuração do parágrafo de introdução */
-
-.apresentacao-texto .especialidade {
-    font-weight: 600;
-    color: #A51D24;
-    border-bottom: 1px solid rgba(165, 29, 36, 0.4);
-} /* Destaca palavras-chave com cor e linha inferior */
+@media (max-width: 480px) {
+    main { margin-top: 4rem; padding-top: 2rem; }
+    #prim { padding: 1rem; gap: 1rem; }
+    #ask { font-size: 1.3rem; line-height: 1.3; text-align: center; }
+    #ask2 { font-size: 1rem; margin-bottom: 1.5rem; text-align: center; }
+}
 
 /* ==========================================================================
-   SESSÃO: ESTATÍSTICAS / PILARES
+   SEÇÃO ESTATÍSTICAS (#stats)
    ========================================================================== */
 #stats {
     margin-top: 6rem;
     width: 100%;
-    padding: 4rem 0; 
+    padding: 4rem 0;
     display: flex;
     justify-content: center;
-    background-color: transparent;
-} /* Container externo da seção de números/KPIs */
+}
 
 .stats-container {
     display: flex;
-    width: 92%; 
+    width: 92%;
     max-width: 1250px;
     background-color: #050d18;
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 16px;
-    padding: 2.5rem 0; 
+    padding: 2.5rem 0;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-} /* Moldura principal que agrupa os itens de estatística */
+}
 
 .stat-item, .last-item {
     flex: 1;
@@ -322,11 +242,11 @@ section#apresent, #prim {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding: 0 2.5rem; 
+    padding: 0 2.5rem;
     border-right: 1px solid rgba(255, 255, 255, 0.1);
-} /* Estiliza cada bloco individual de dado estatístico */
+}
 
-.last-item { border-right: none; } /* Remove a borda lateral do último item da lista */
+.last-item { border-right: none; }
 
 .stat-number {
     font-size: 2.6rem;
@@ -336,7 +256,7 @@ section#apresent, #prim {
     padding: 0;
     line-height: 1;
     letter-spacing: -1px;
-} /* Estilo do número ou dado principal da estatística */
+}
 
 .stat-title {
     font-size: 0.85rem;
@@ -349,22 +269,20 @@ section#apresent, #prim {
     text-transform: uppercase;
     letter-spacing: 1px;
     opacity: 0.9;
-} /* Título descritivo do dado estatístico */
-
-.stat-subtitle {
-    font-size: 0.8rem;
-    font-weight: 400;
-    color: #888;
-    margin: 0.3rem 0 0 0;
-} /* Texto auxiliar pequeno abaixo do título da estatística */
+}
 
 @media (max-width: 992px) {
     .stat-number { font-size: 2rem; }
     .stat-item, .last-item { padding: 0 1.5rem; }
-} /* Ajuste de tamanho para tablets */
+}
 
 @media (max-width: 768px) {
-    .stats-container { flex-direction: column; width: 90%; padding: 1rem 0; }
+    #stats { margin-top: 2rem; padding: 1rem 0; }
+    .stats-container {
+        flex-direction: column;
+        width: 90%;
+        padding: 1rem 0;
+    }
     .stat-item, .last-item {
         border-right: none;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -372,43 +290,132 @@ section#apresent, #prim {
         align-items: center;
         text-align: center;
     }
-    .stat-item .stat-number, .stat-item .stat-title { text-align: center; }
-    .last-item { border-bottom: none; }
-} /* Reorganiza as estatísticas em lista vertical para celulares */
+    .last-item {
+        border-bottom: none;
+        align-items: center;
+        text-align: center;
+    }
+}
 
 /* ==========================================================================
-   SESSÃO: SERVIÇOS
+   SEÇÃO APRESENTAÇÃO (#apresent)
    ========================================================================== */
+#apresent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2rem 5%;
+    gap: 2rem;
+}
+
+.apresentacao-container {
+    padding: 5rem 5%;
+    max-width: 900px;
+}
+
+.apresentacao-texto {
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.apresentacao-texto .destaque-boas-vindas {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #A51D24;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.apresentacao-texto .corpo-texto {
+    font-size: 1.4rem;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+.apresentacao-texto .especialidade {
+    font-weight: 600;
+    color: #A51D24;
+    border-bottom: 1px solid rgba(165, 29, 36, 0.4);
+}
+
+#thiago {
+    max-width: 400px;
+    height: auto;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+}
+
+@media (max-width: 768px) {
+    #apresent {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 5%;
+        gap: 0;
+    }
+    .apresentacao-container { padding: 2rem 5%; }
+    .apresentacao-texto { text-align: center; }
+    .apresentacao-texto .destaque-boas-vindas { font-size: 2rem; }
+    .apresentacao-texto .corpo-texto { font-size: 1.1rem; }
+    #thiago { max-width: 70%; margin: 0 auto 2rem; }
+}
+
+@media (max-width: 480px) {
+    .apresentacao-texto .destaque-boas-vindas { font-size: 1.6rem; }
+    #thiago { max-width: 80%; }
+}
+
+/* ==========================================================================
+   SEÇÃO SERVIÇOS (#fim + #servicos)
+   ========================================================================== */
+#fim {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+
 #servicos {
-    width: 80rem;
-    padding: 4rem;
+    width: 100%;
+    max-width: 1100px;
+    padding: 4rem 5%;
     display: flex;
     justify-content: space-around;
-} /* Define o espaçamento e disposição da seção de portfólio de serviços */
+    gap: 2rem;
+}
+
+#servicos h1 {
+    font-size: 2rem;
+    font-weight: 300;
+    color: white;
+    margin-bottom: 1.5rem;
+}
 
 .grid-servicos {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem; 
+    gap: 1.5rem;
     width: 100%;
-    max-width: 1100px;
-} /* Organiza os cards de serviços em uma coluna flexível */
+}
 
 .card-servico {
-    background-color: #050d18; 
+    background-color: #050d18;
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 12px;
     padding: 2rem;
     display: flex;
-    align-items: center; 
+    align-items: center;
     transition: all 0.3s ease;
-} /* Estilização visual e interativa dos cards de serviço */
+}
 
 .card-servico:hover {
     transform: scale(1.02);
     border-color: #A51D24;
     background-color: rgba(165, 29, 36, 0.05);
-} /* Efeito de zoom e troca de cor ao passar o mouse no card */
+}
 
 .marcador-tg7 {
     width: 4px;
@@ -417,7 +424,7 @@ section#apresent, #prim {
     margin-right: 1.5rem;
     flex-shrink: 0;
     border-radius: 2px;
-} /* Barra vertical decorativa vermelha dentro do card */
+}
 
 .card-servico p {
     color: #ffffff;
@@ -426,45 +433,29 @@ section#apresent, #prim {
     font-weight: 500;
     line-height: 1.4;
     margin: 0;
-} /* Formatação do texto descritivo dentro do card de serviço */
-
-.meu-card-fiscal {
-    background-color: rgba(165, 29, 36, 0.1);
-    border: 1px solid #A51D24;
-    padding: 1rem;
-    border-radius: 8px;
-    color: white; 
-    width: 5cm;
-} /* Estilo específico para card relacionado a serviços fiscais */
-
-.coluna-servicos { display: flex; flex-direction: column; align-items: center; } /* Centraliza colunas de serviços em blocos alternativos */
-
-.titulo-coluna { font-size: 2rem; color: white; margin-bottom: 1.5rem; font-weight: 300; } /* Títulos das subdivisões de serviços */
-
-.box-interna { 
-    width: 100%; 
-    border: 1px solid rgba(255, 255, 255, 0.15); 
-    border-radius: 20px; 
-    padding: 1.5rem; 
-    background: rgba(5, 13, 24, 0.4); 
-    display: flex; 
-    flex-direction: column; 
-    gap: 1rem; 
-} /* Bloco secundário para agrupar conteúdos de serviços internos */
+}
 
 @media (max-width: 768px) {
-    .grid-servicos { grid-template-columns: 1fr; }
-} /* Garante que o grid de serviços ocupe 1 coluna no mobile */
+    #servicos {
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 1rem;
+        gap: 2rem;
+    }
+    #servicos > div { width: 100%; }
+    .card-servico { padding: 1.2rem; }
+    .card-servico p { font-size: 1rem; }
+}
 
 /* ==========================================================================
-   SESSÃO: CONTATO
+   SEÇÃO CONTATO (#contato)
    ========================================================================== */
 #contato {
     padding: 6rem 5%;
     background-color: transparent;
     display: flex;
     justify-content: center;
-} /* Espaçamento global da seção de formulário e links de contato */
+}
 
 .contato-wrapper {
     display: grid;
@@ -473,7 +464,7 @@ section#apresent, #prim {
     width: 100%;
     max-width: 1200px;
     align-items: center;
-} /* Divide a seção de contato entre informações e formulário */
+}
 
 .contato-info {
     display: flex;
@@ -482,7 +473,7 @@ section#apresent, #prim {
     align-items: flex-start;
     text-align: left;
     gap: 1.5rem;
-} /* Alinha textos e botões de contato à esquerda */
+}
 
 .tag-vermelha {
     color: #A51D24;
@@ -490,7 +481,12 @@ section#apresent, #prim {
     font-weight: 700;
     letter-spacing: 2px;
     font-size: 3rem;
-} /* Estilo do título de seção em caixa alta e fonte grande */
+}
+
+.contato-info h2 {
+    font-size: 1.8rem;
+    margin: 0;
+}
 
 .links-diretos {
     display: flex;
@@ -498,9 +494,7 @@ section#apresent, #prim {
     align-items: flex-start;
     gap: 1rem;
     width: 100%;
-    margin: 0;
-    padding: 0;
-} /* Lista de links de redes sociais ou telefones */
+}
 
 .link-item {
     display: flex;
@@ -508,10 +502,10 @@ section#apresent, #prim {
     text-decoration: none;
     color: white;
     font-size: 1.1rem;
-    transition: 0.3s;
-} /* Estilização básica dos links de contato */
+    transition: color 0.3s;
+}
 
-.link-item:hover { color: #A51D24; } /* Mudança de cor no hover dos links de contato */
+.link-item:hover { color: #A51D24; }
 
 .contato-card {
     background-color: #050d18;
@@ -519,21 +513,23 @@ section#apresent, #prim {
     padding: 3rem;
     border-radius: 20px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-} /* Bloco visual do formulário de contato */
+}
 
 .input-group {
     margin-bottom: 1.5rem;
     display: flex;
     flex-direction: column;
-} /* Espaçamento entre campos do formulário */
+}
 
 .input-group label {
     font-size: 0.85rem;
     margin-bottom: 0.5rem;
     color: #888;
-} /* Estilização dos rótulos (labels) acima dos inputs */
+}
 
-.input-group input, .input-group select, .input-group textarea {
+.input-group input,
+.input-group select,
+.input-group textarea {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 12px;
@@ -541,9 +537,10 @@ section#apresent, #prim {
     color: white;
     font-family: 'Poppins', sans-serif;
     outline: none;
-} /* Estilo padrão para os campos de entrada de dados */
+    width: 100%;
+}
 
-.input-group input:focus { border-color: #A51D24; } /* Destaca o campo em edição com a cor vermelha */
+.input-group input:focus { border-color: #A51D24; }
 
 .btn-enviar {
     width: 100%;
@@ -556,106 +553,47 @@ section#apresent, #prim {
     text-transform: uppercase;
     cursor: pointer;
     transition: 0.3s;
-} /* Estiliza o botão de submissão do formulário */
+}
 
 .btn-enviar:hover {
     background-color: #82161b;
     transform: translateY(-2px);
-} /* Efeito visual e de movimento ao passar o mouse no botão enviar */
+}
 
 @media (max-width: 900px) {
-    .contato-wrapper { grid-template-columns: 1fr; text-align: center; }
+    .contato-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
     .contato-info { align-items: center; }
-} /* Empilha as informações de contato em mobile */
+    .links-diretos { align-items: center; }
+    .tag-vermelha { font-size: 2rem; }
+    .contato-info h2 { font-size: 1.4rem; }
+}
+
+@media (max-width: 480px) {
+    #contato { padding: 3rem 5%; }
+    .contato-card { padding: 1.5rem; }
+    .tag-vermelha { font-size: 1.6rem; }
+}
 
 /* ==========================================================================
    FOOTER
    ========================================================================== */
-
-.footer-link {
-    transition: all 0.3s ease;
-    opacity: 0.7;
-}
-.footer-link:hover {
-    opacity: 1;
-    color: #A51D24; /* O vermelho da sua marca */
-    padding-left: 5px; /* Efeito de "empurrão" suave */
-}
-#fim {
-    width: 100%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    background-color: transparent;
-} /* Área final do site para transição de fundo */
-
-section#fim {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} /* Alinhamento central da seção de encerramento */
-
 footer {
     display: flex;
-    height: 5rem;
-    font-size: 0.8rem;
-    padding: 1%;
-    justify-content: space-between;
-    text-align: center;
-} /* Estiliza o rodapé com informações de copyright e links secundários */
-
-/* ==========================================================================
-   FOOTER MODERNO
-   ========================================================================== */
-.footer-moderno {
-    background-color: #050d18; /* Um tom acima do preto para dar profundidade */
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 3rem 5% 2rem;
-    color: white;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1.5rem 5%;
     justify-content: space-between;
     align-items: center;
-    gap: 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
 }
 
-/* Marca e Copyright */
-.footer-brand {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.footer-brand .logo-img {
-    height: 40px; /* Ajuste conforme necessário */
-    width: auto;
-    filter: grayscale(1) brightness(1.5); /* Efeito minimalista para o footer */
-    transition: 0.3s;
-}
-
-.footer-brand .logo-img:hover {
-    filter: grayscale(0) brightness(1);
-}
-
-.copyright-text {
-    font-size: 0.85rem;
-    font-weight: 400;
-    line-height: 1.5;
-    opacity: 0.6;
-}
-
-/* Seção de Desenvolvimento */
-.footer-dev {
-    text-align: right;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-}
+footer .logo-img { height: 40px; width: auto; }
 
 .dev-title {
     font-size: 0.7rem;
@@ -663,12 +601,13 @@ footer {
     letter-spacing: 1px;
     opacity: 0.5;
     margin: 0;
+    color: white;
 }
 
 .dev-name {
     font-size: 1rem;
     font-weight: 700;
-    color: #A51D24; /* O vermelho da sua marca */
+    color: #A51D24;
     text-decoration: none;
     transition: 0.3s;
 }
@@ -678,22 +617,56 @@ footer {
     text-shadow: 0 0 10px rgba(165, 29, 36, 0.5);
 }
 
-.dev-email {
-    font-size: 0.8rem;
-    opacity: 0.6;
+.dev-email { font-size: 0.8rem; opacity: 0; }
+
+.footer-link {
+    transition: all 0.3s ease;
+    opacity: 0.7;
 }
 
-/* Responsividade para Celular */
+.footer-link:hover {
+    opacity: 1;
+    color: #A51D24;
+    padding-left: 5px;
+}
+
 @media (max-width: 768px) {
-    .footer-container {
+    footer {
         flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 2rem 5%;
+    }
+}
+@media (max-width: 768px) {
+    .stat-item {
+        align-items: center;
         text-align: center;
     }
-    
-    .footer-dev {
+    .stat-item .stat-title {
+        text-align: center; /* 👈 sobrescreve o text-align: left da regra base */
+    }
+}
+@media (max-width: 768px) {
+    .contato-info {
+        align-items: center;
         text-align: center;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        padding-top: 1.5rem;
-        width: 100%;
+    }
+}
+@media (max-width: 480px) {
+    .header-container {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.5rem 4%;
+    }
+
+    .nav-links {
+        gap: 1rem;
+        font-size: 0.8rem;
+    }
+
+    .nav-btn {
+        padding: 6px 12px;
+        font-size: 0.75rem;
     }
 }
